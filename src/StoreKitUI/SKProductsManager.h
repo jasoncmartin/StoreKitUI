@@ -17,12 +17,17 @@
 	@private
 	NSArray *products;
 	id <SKProductsManagerDelegate> delegate;
+	
+	BOOL sandbox;
 }
 
 @property (nonatomic, copy, readonly) NSArray *products;
 @property (nonatomic, assign) id <SKProductsManagerDelegate> delegate;
+@property (nonatomic, assign, getter=isSandbox) BOOL sandbox;
 
 + (SKProductsManager *)productManager;
+
+- (void)loadProducts:(NSSet *)allProducts;
 
 @end
 

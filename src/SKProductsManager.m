@@ -6,7 +6,7 @@
 //  Copyright 2009 New Media Geekz. All rights reserved.
 //
 
-#import "SKProductsManager.h"
+#import "StoreKitUI/SKProductsManager.h"
 
 static SKProductsManager *productManager = nil;
 
@@ -73,6 +73,8 @@ static SKProductsManager *productManager = nil;
 }
 
 - (void)loadProducts:(NSSet *)allProducts {
+	NSLog(@"Loading Products: %@", allProducts);
+	
 	SKProductsRequest *preq = [[SKProductsRequest alloc] initWithProductIdentifiers:allProducts];
 	preq.delegate = self;
 	[preq start];

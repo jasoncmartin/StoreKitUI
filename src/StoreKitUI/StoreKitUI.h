@@ -8,5 +8,5 @@
 
 #import <StoreKit/StoreKit.h>
 
-#import "SKProductsManager.h"
-#import "SKNavigationController.h"
+#import "StoreKitUI/SKProductsManager.h"
+#import "StoreKitUI/SKStoreViewController.h"

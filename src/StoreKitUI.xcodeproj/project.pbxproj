@@ -10,26 +10,22 @@
 		AA747D9F0F9514B9006C5449 /* StoreKitUI_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* StoreKitUI_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		C366E52F10EFD97600E08C0C /* SKProductsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C366E52D10EFD97600E08C0C /* SKProductsManager.h */; };
-		C366E53010EFD97600E08C0C /* SKStoreNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = C366E52E10EFD97600E08C0C /* SKStoreNavigationController.h */; };
 		C366E53810EFD99700E08C0C /* StoreKitUI.h in Headers */ = {isa = PBXBuildFile; fileRef = C366E53710EFD99700E08C0C /* StoreKitUI.h */; };
 		C3C3307C10E93EDC00B8E055 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C3307B10E93EDC00B8E055 /* StoreKit.framework */; };
 		C3C3308810E9417B00B8E055 /* SKProductsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3308610E9417B00B8E055 /* SKProductsManager.m */; };
-		C3C3308C10E9449E00B8E055 /* SKStoreNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3308A10E9449E00B8E055 /* SKStoreNavigationController.m */; };
-		C3C3308F10E94BB100B8E055 /* SKStoreRootViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C3C3308D10E94BB100B8E055 /* SKStoreRootViewController.h */; };
-		C3C3309010E94BB100B8E055 /* SKStoreRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3308E10E94BB100B8E055 /* SKStoreRootViewController.m */; };
+		C3C3309010E94BB100B8E055 /* SKStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3308E10E94BB100B8E055 /* SKStoreViewController.m */; };
+		C3F9872410F1521900B5161D /* SKStoreViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C3F9872310F1521900B5161D /* SKStoreViewController.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AA747D9E0F9514B9006C5449 /* StoreKitUI_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreKitUI_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C366E52D10EFD97600E08C0C /* SKProductsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKProductsManager.h; path = StoreKitUI/SKProductsManager.h; sourceTree = "<group>"; };
-		C366E52E10EFD97600E08C0C /* SKStoreNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKStoreNavigationController.h; path = StoreKitUI/SKStoreNavigationController.h; sourceTree = "<group>"; };
 		C366E53710EFD99700E08C0C /* StoreKitUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoreKitUI.h; path = StoreKitUI/StoreKitUI.h; sourceTree = "<group>"; };
 		C3C3307B10E93EDC00B8E055 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C3C3308610E9417B00B8E055 /* SKProductsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKProductsManager.m; sourceTree = "<group>"; };
-		C3C3308A10E9449E00B8E055 /* SKStoreNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKStoreNavigationController.m; sourceTree = "<group>"; };
-		C3C3308D10E94BB100B8E055 /* SKStoreRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKStoreRootViewController.h; sourceTree = "<group>"; };
-		C3C3308E10E94BB100B8E055 /* SKStoreRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKStoreRootViewController.m; sourceTree = "<group>"; };
+		C3C3308E10E94BB100B8E055 /* SKStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKStoreViewController.m; sourceTree = "<group>"; };
+		C3F9872310F1521900B5161D /* SKStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKStoreViewController.h; path = StoreKitUI/SKStoreViewController.h; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libStoreKitUI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libStoreKitUI.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -80,10 +76,8 @@
 				C366E53710EFD99700E08C0C /* StoreKitUI.h */,
 				C366E52D10EFD97600E08C0C /* SKProductsManager.h */,
 				C3C3308610E9417B00B8E055 /* SKProductsManager.m */,
-				C366E52E10EFD97600E08C0C /* SKStoreNavigationController.h */,
-				C3C3308A10E9449E00B8E055 /* SKStoreNavigationController.m */,
-				C3C3308D10E94BB100B8E055 /* SKStoreRootViewController.h */,
-				C3C3308E10E94BB100B8E055 /* SKStoreRootViewController.m */,
+				C3F9872310F1521900B5161D /* SKStoreViewController.h */,
+				C3C3308E10E94BB100B8E055 /* SKStoreViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -104,10 +98,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA747D9F0F9514B9006C5449 /* StoreKitUI_Prefix.pch in Headers */,
-				C3C3308F10E94BB100B8E055 /* SKStoreRootViewController.h in Headers */,
 				C366E52F10EFD97600E08C0C /* SKProductsManager.h in Headers */,
-				C366E53010EFD97600E08C0C /* SKStoreNavigationController.h in Headers */,
 				C366E53810EFD99700E08C0C /* StoreKitUI.h in Headers */,
+				C3F9872410F1521900B5161D /* SKStoreViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,8 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C3308810E9417B00B8E055 /* SKProductsManager.m in Sources */,
-				C3C3308C10E9449E00B8E055 /* SKStoreNavigationController.m in Sources */,
-				C3C3309010E94BB100B8E055 /* SKStoreRootViewController.m in Sources */,
+				C3C3309010E94BB100B8E055 /* SKStoreViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
