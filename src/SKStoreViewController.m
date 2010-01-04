@@ -109,7 +109,7 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"SKUIStoreCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -117,17 +117,16 @@
     }
     
     // Set up the cell...
-	cell.textLabel.text = [[[[SKProductsManager productManager] products] objectAtIndex:indexPath.row] localizedTitle];
+	SKProduct *product = [[[SKProductsManager productManager] products] objectAtIndex:indexPath.row];
+	
+	cell.textLabel.text = [product localizedTitle];
 	
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+	[[SKProductsManager productManager] purchaseProductAtIndex:indexPath.row];
 }
 
 

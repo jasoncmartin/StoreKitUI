@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		AA747D9F0F9514B9006C5449 /* StoreKitUI_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* StoreKitUI_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		C366E52F10EFD97600E08C0C /* SKProductsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C366E52D10EFD97600E08C0C /* SKProductsManager.h */; };
-		C366E53810EFD99700E08C0C /* StoreKitUI.h in Headers */ = {isa = PBXBuildFile; fileRef = C366E53710EFD99700E08C0C /* StoreKitUI.h */; };
+		C366E52F10EFD97600E08C0C /* SKProductsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C366E52D10EFD97600E08C0C /* SKProductsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C366E53810EFD99700E08C0C /* StoreKitUI.h in Headers */ = {isa = PBXBuildFile; fileRef = C366E53710EFD99700E08C0C /* StoreKitUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3C3307C10E93EDC00B8E055 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C3307B10E93EDC00B8E055 /* StoreKit.framework */; };
 		C3C3308810E9417B00B8E055 /* SKProductsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3308610E9417B00B8E055 /* SKProductsManager.m */; };
 		C3C3309010E94BB100B8E055 /* SKStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3308E10E94BB100B8E055 /* SKStoreViewController.m */; };
-		C3F9872410F1521900B5161D /* SKStoreViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C3F9872310F1521900B5161D /* SKStoreViewController.h */; };
+		C3F9872410F1521900B5161D /* SKStoreViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C3F9872310F1521900B5161D /* SKStoreViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3F987D810F1615F00B5161D /* SKDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = C3F987D610F1615F00B5161D /* SKDebug.h */; };
+		C3F9883110F171AC00B5161D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F9883010F171AC00B5161D /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		C3C3308610E9417B00B8E055 /* SKProductsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKProductsManager.m; sourceTree = "<group>"; };
 		C3C3308E10E94BB100B8E055 /* SKStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKStoreViewController.m; sourceTree = "<group>"; };
 		C3F9872310F1521900B5161D /* SKStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKStoreViewController.h; path = StoreKitUI/SKStoreViewController.h; sourceTree = "<group>"; };
+		C3F987D610F1615F00B5161D /* SKDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKDebug.h; sourceTree = "<group>"; };
+		C3F9883010F171AC00B5161D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libStoreKitUI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libStoreKitUI.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -36,6 +40,7 @@
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				C3C3307C10E93EDC00B8E055 /* StoreKit.framework in Frameworks */,
+				C3F9883110F171AC00B5161D /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +71,7 @@
 			children = (
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				C3C3307B10E93EDC00B8E055 /* StoreKit.framework */,
+				C3F9883010F171AC00B5161D /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -78,6 +84,7 @@
 				C3C3308610E9417B00B8E055 /* SKProductsManager.m */,
 				C3F9872310F1521900B5161D /* SKStoreViewController.h */,
 				C3C3308E10E94BB100B8E055 /* SKStoreViewController.m */,
+				C3F987D610F1615F00B5161D /* SKDebug.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -101,6 +108,7 @@
 				C366E52F10EFD97600E08C0C /* SKProductsManager.h in Headers */,
 				C366E53810EFD99700E08C0C /* StoreKitUI.h in Headers */,
 				C3F9872410F1521900B5161D /* SKStoreViewController.h in Headers */,
+				C3F987D810F1615F00B5161D /* SKDebug.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +201,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";

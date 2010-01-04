@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_3_0
 
 @interface SKStoreViewController : UITableViewController {
 	@private
@@ -17,3 +18,5 @@
 @property (nonatomic, copy) NSSet *productIDs;
 
 @end
+
+#endif

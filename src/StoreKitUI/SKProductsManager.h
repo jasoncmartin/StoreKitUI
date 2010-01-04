@@ -13,21 +13,23 @@
 
 @protocol SKProductsManagerDelegate;
 
-@interface SKProductsManager : NSObject <SKProductsRequestDelegate> {
+@interface SKProductsManager : NSObject <SKProductsRequestDelegate, SKPaymentTransactionObserver> {
 	@private
 	NSArray *products;
 	id <SKProductsManagerDelegate> delegate;
 	
-	BOOL sandbox;
+	NSMutableDictionary *purchases;
 }
 
 @property (nonatomic, copy, readonly) NSArray *products;
 @property (nonatomic, assign) id <SKProductsManagerDelegate> delegate;
-@property (nonatomic, assign, getter=isSandbox) BOOL sandbox;
 
 + (SKProductsManager *)productManager;
 
 - (void)loadProducts:(NSSet *)allProducts;
+
+- (void)purchaseProduct:(SKProduct *)aProduct;
+- (void)purchaseProductAtIndex:(NSInteger)index;
 
 @end
 
@@ -36,6 +38,7 @@
 @optional
 
 - (void)productsManagerDidGetNewProducts:(NSArray *)newProducts;
+- (void)productsManagerDidCompletePurchase:(NSString *)productID;
 
 @end
 
