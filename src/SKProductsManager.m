@@ -31,6 +31,8 @@ static SKProductsManager *productManager = nil;
 	if([delegate respondsToSelector:@selector(productsManagerDidCompletePurchase:)]) {
 		[delegate performSelector:@selector(productsManagerDidCompletePurchase:) withObject:productID];
 	}
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"StoreKitUIDidFinishPurchase" object:productID];
 }
 
 // PUBLIC
@@ -168,6 +170,8 @@ static SKProductsManager *productManager = nil;
 														   otherButtonTitles:nil] autorelease];
 					[alert show];
 				}
+				
+				[[NSNotificationCenter defaultCenter] postNotificationName:@"StoreKitUIDidFinishPurchase" object:nil];
 				
 				// Remove the transaction from the payment queue.
 				[[SKPaymentQueue defaultQueue] finishTransaction:transaction];

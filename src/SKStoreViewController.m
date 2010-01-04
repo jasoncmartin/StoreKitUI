@@ -8,6 +8,7 @@
 
 #import "SKStoreViewController.h"
 #import "StoreKitUI/SKProductsManager.h"
+#import "SKProgressView.h"
 
 @implementation SKStoreViewController
 
@@ -17,7 +18,13 @@
 	if(self = [super initWithStyle:UITableViewStylePlain]) {
 		[[SKProductsManager productManager] addObserver:self forKeyPath:@"products" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:NULL];
 		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPurchase:) name:@"StoreKitUIDidFinishPurchase" object:nil];
+		
 		self.navigationItem.title = NSLocalizedString(@"Store", @"Store");
+		
+		progressView = [[SKProgressView alloc] init];
+		progressView.label.text = NSLocalizedString(@"Loading...", @"Loading...");
+		[progressView.label sizeToFit];
 	}
 	
 	return self;
@@ -25,8 +32,16 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqual:@"products"]) {
+		[progressView hide];
+		
 		[[self tableView] reloadData];
     }
+}
+
+- (void)didPurchase:(id)unused {
+	[progressView hide];
+	
+	[[self tableView] reloadData];
 }
 
 - (void)setProductIDs:(NSSet *)newProducts {
@@ -35,8 +50,11 @@
 			[productIDs release];
 			productIDs = [newProducts copy];
 			
-			if(productIDs)
+			if(productIDs) {
 				[[SKProductsManager productManager] loadProducts:productIDs];
+				
+				[progressView performSelector:@selector(show) withObject:nil afterDelay:0.3];
+			}
 		}
 	}
 }
@@ -113,19 +131,44 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
+	
+	//cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
     
     // Set up the cell...
 	SKProduct *product = [[[SKProductsManager productManager] products] objectAtIndex:indexPath.row];
 	
 	cell.textLabel.text = [product localizedTitle];
 	
+	if([[SKProductsManager productManager] isProductPurchased:product.productIdentifier]) {
+		cell.detailTextLabel.text = NSLocalizedString(@"Purchased", @"Purchased");
+		cell.accessoryType = UITableViewCellAccessoryCheckmark;
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	} else {
+		NSNumberFormatter *currencyStyle = [[NSNumberFormatter alloc] init];
+		[currencyStyle setFormatterBehavior:NSNumberFormatterBehavior10_4];
+		[currencyStyle setNumberStyle:NSNumberFormatterCurrencyStyle];
+		[currencyStyle setLocale:product.priceLocale];
+		
+		cell.detailTextLabel.text = [currencyStyle stringFromNumber:product.price];
+		[currencyStyle release];
+	}
+	
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if([[SKProductsManager productManager] isProductPurchased:[(SKProduct *)[[[SKProductsManager productManager] products] objectAtIndex:indexPath.row] productIdentifier]])
+	   return;
+	
+	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+	
+	progressView.label.text = NSLocalizedString(@"Purchasing...", @"Purchasing...");
+	[progressView.label sizeToFit];
+	[progressView show];
+	
 	[[SKProductsManager productManager] purchaseProductAtIndex:indexPath.row];
 }
 
@@ -172,6 +215,10 @@
 
 - (void)dealloc {
 	[[SKProductsManager productManager] removeObserver:self forKeyPath:@"products"];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
+	[progressView release];
+	progressView = nil;
 	
     [super dealloc];
 }
