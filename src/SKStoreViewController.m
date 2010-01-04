@@ -142,7 +142,7 @@
 	cell.textLabel.text = [product localizedTitle];
 	
 	if([[SKProductsManager productManager] isProductPurchased:product.productIdentifier]) {
-		cell.detailTextLabel.text = NSLocalizedString(@"Purchased", @"Purchased");
+		//cell.detailTextLabel.text = NSLocalizedString(@"Purchased", @"Purchased");
 		cell.accessoryType = UITableViewCellAccessoryCheckmark;
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	} else {
