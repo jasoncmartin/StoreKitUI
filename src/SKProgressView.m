@@ -28,11 +28,20 @@
 }
 
 - (void)layoutSubviews {
-	UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-	[indicator startAnimating];
-	indicator.center = [[[UIApplication sharedApplication] keyWindow] center];
-	[self addSubview:indicator];
-	[indicator release];
+	BOOL containsIndicator = NO;
+	
+	for(UIView *subview in self.subviews) {
+		if([subview isKindOfClass:[UIActivityIndicatorView class]])
+			containsIndicator = YES;
+	}
+	
+	if(!containsIndicator) {
+		UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+		[indicator startAnimating];
+		indicator.center = [[[UIApplication sharedApplication] keyWindow] center];
+		[self addSubview:indicator];
+		[indicator release];
+	}
 	
 	[label sizeToFit];
 	label.center = CGPointMake(indicator.center.x, indicator.center.y + 30);
