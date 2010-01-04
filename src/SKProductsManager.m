@@ -26,7 +26,7 @@ static SKProductsManager *productManager = nil;
 		key = [[productID componentsSeparatedByString:@"."] lastObject];
 	}
 	
-	[purchases setObject:[NSNumber numberWithBool:YES] forKey:key];
+	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:[NSString stringWithFormat:@"StoreKitUI_%@", key]];
 	
 	if([delegate respondsToSelector:@selector(productsManagerDidCompletePurchase:)]) {
 		[delegate performSelector:@selector(productsManagerDidCompletePurchase:) withObject:productID];
@@ -42,12 +42,6 @@ static SKProductsManager *productManager = nil;
 		delegate = nil;
 		
 		[[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-		
-		products = [[NSMutableDictionary dictionaryWithContentsOfFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"StoreKitUIPurchases.plist"]] retain];
-		
-		if(!products) {
-			products = [[NSMutableDictionary dictionaryWithCapacity:1] retain];
-		}
 	}
 	
 	return self;
@@ -95,10 +89,6 @@ static SKProductsManager *productManager = nil;
 }
 
 - (void)dealloc {
-	if([purchases count]) {
-		[purchases writeToFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"StoreKitUIPurchases.plist"] atomically:YES];
-	}
-	
 	[[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
 	
 	[products release];
@@ -134,7 +124,7 @@ static SKProductsManager *productManager = nil;
 		key = [[productID componentsSeparatedByString:@"."] lastObject];
 	}
 	
-	return [[purchases objectForKey:key] boolValue];
+	return [[NSUserDefaults standardUserDefaults] boolForKey:[NSString stringWithFormat:@"StoreKitUI_%@", key]];
 }
 
 - (void)requestDidFinish:(SKRequest *)request
@@ -166,6 +156,9 @@ static SKProductsManager *productManager = nil;
 			case SKPaymentTransactionStatePurchased:
 				// take action to purchase the feature
 				[self provideContent:transaction.payment.productIdentifier];
+				
+				// Remove the transaction from the payment queue.
+				[[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 				break;
 			case SKPaymentTransactionStateFailed:
 				if (transaction.error.code != SKErrorPaymentCancelled) {
@@ -175,15 +168,19 @@ static SKProductsManager *productManager = nil;
 														   otherButtonTitles:nil] autorelease];
 					[alert show];
 				}
+				
+				// Remove the transaction from the payment queue.
+				[[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 				break;
 			case SKPaymentTransactionStateRestored:
 				// take action to restore the app as if it was purchased
 				[self provideContent:transaction.originalTransaction.payment.productIdentifier];
+				
+				// Remove the transaction from the payment queue.
+				[[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 			default:
 				break;
 		}
-		// Remove the transaction from the payment queue.
-		[[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 	}
 }
 

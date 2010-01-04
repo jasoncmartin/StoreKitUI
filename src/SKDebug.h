@@ -10,8 +10,14 @@
 #define SKLOGLEVEL_WARNING  3
 #define SKLOGLEVEL_ERROR    1
 
+#ifndef DEBUG
 #ifndef SKMAXLOGLEVEL
 #define SKMAXLOGLEVEL SKLOGLEVEL_WARNING
+#endif
+#else
+#ifndef SKMAXLOGLEVEL
+#define SKMAXLOGLEVEL SKLOGLEVEL_INFO
+#endif
 #endif
 
 #ifdef DEBUG

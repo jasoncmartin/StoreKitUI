@@ -17,8 +17,6 @@
 	@private
 	NSArray *products;
 	id <SKProductsManagerDelegate> delegate;
-	
-	NSMutableDictionary *purchases;
 }
 
 @property (nonatomic, copy, readonly) NSArray *products;
@@ -30,6 +28,8 @@
 
 - (void)purchaseProduct:(SKProduct *)aProduct;
 - (void)purchaseProductAtIndex:(NSInteger)index;
+
+- (BOOL)isProductPurchased:(NSString *)productID;
 
 @end
 
