@@ -1,7 +1,7 @@
 StoreKitUI
 ==========
 
-StoreKitUI is an iPhone library that allows for a simple front-end for StoreKit. Currently, this project is incomplete, and should not be used in a production app.
+StoreKitUI is an iPhone library that allows for a simple front-end for StoreKit. Simply add this library to your project, and push the SKStoreViewController on the navigation stack, and you're good to go! More info on the API and examples will be published in the future.
 
 Adding StoreKitUI to your project
 =================================

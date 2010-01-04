@@ -51,7 +51,8 @@
 	label.backgroundColor = [UIColor clearColor];
 	label.textColor = [UIColor whiteColor];
 	
-	[self addSubview:label];
+	if(!label.superview)
+		[self addSubview:label];
 }
 
 - (void)fillRoundedRect:(CGRect)rect inContext:(CGContextRef)context {
