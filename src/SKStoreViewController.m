@@ -10,17 +10,29 @@
 #import "StoreKitUI/SKProductsManager.h"
 #import "SKProgressView.h"
 
+#import <StoreKit/StoreKit.h>
+
 @implementation SKStoreViewController
 
 @synthesize productIDs;
 
 - (id)init {
 	if(self = [super initWithStyle:UITableViewStylePlain]) {
+		if(![SKPaymentQueue canMakePayments]) {
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"Error") message:NSLocalizedString(@"In-app purchase is disabled. Please enable it to activate more features.", @"In-app purchase is disabled. Please enable it to activate more features.") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"OK") otherButtonTitles:nil];
+			[alert show];
+			[alert release];
+			
+			return nil;
+		}
+		
 		[[SKProductsManager productManager] addObserver:self forKeyPath:@"products" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:NULL];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPurchase:) name:@"StoreKitUIDidFinishPurchase" object:nil];
 		
 		self.navigationItem.title = NSLocalizedString(@"Store", @"Store");
+		
+		//store.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:store.navigationController action:@selector(dismissModalViewController)] autorelease];
 		
 		progressView = [[SKProgressView alloc] init];
 		progressView.label.text = NSLocalizedString(@"Loading...", @"Loading...");
