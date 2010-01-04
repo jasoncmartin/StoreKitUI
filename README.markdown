@@ -25,12 +25,16 @@ StoreKitUI is compiled as a static library, and the easiest way to add it to you
    application's target.  Under the "General" tab you will see a "Direct Dependencies" section. 
    Click the "+" button, select "StoreKitUI", and click "Add Target".
 
-5. Finally, we need to tell your project where to find the StoreKitUI headers.  Open your
+5. Now you need to add the Store Kit framework to your project.  Right click on the
+   "Frameworks" group in your project (or equivalent) and select Add > Existing Frameworks. 
+   Then locate StoreKit.framework and add it to the project.
+
+6. Finally, we need to tell your project where to find the StoreKitUI headers.  Open your
    "Project Settings" and go to the "Build" tab. Look for "Header Search Paths" and double-click
    it.  Add the relative path from your project's directory to the "StoreKitUI/src" directory.
 
-6. While you are in Project Settings, go to "Other Linker Flags" under the "Linker" section, and
+7. While you are in Project Settings, go to "Other Linker Flags" under the "Linker" section, and
    add "-ObjC" and "-all_load" to the list of flags.
 
-7. You're ready to go.  Just #import "StoreKitUI/StoreKitUI.h" anywhere you want to use StoreKitUI classes
+8. You're ready to go.  Just #import "StoreKitUI/StoreKitUI.h" anywhere you want to use StoreKitUI classes
    in your project.
