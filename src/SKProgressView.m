@@ -28,15 +28,17 @@
 }
 
 - (void)layoutSubviews {
-	BOOL containsIndicator = NO;
+	UIActivityIndicatorView *indicator = nil;
 	
 	for(UIView *subview in self.subviews) {
-		if([subview isKindOfClass:[UIActivityIndicatorView class]])
-			containsIndicator = YES;
+		if([subview isKindOfClass:[UIActivityIndicatorView class]]) {
+			indicator = (UIActivityIndicatorView *)subview;
+			break;
+		}
 	}
 	
-	if(!containsIndicator) {
-		UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+	if(!indicator) {
+		indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 		[indicator startAnimating];
 		indicator.center = [[[UIApplication sharedApplication] keyWindow] center];
 		[self addSubview:indicator];
