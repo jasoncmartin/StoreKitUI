@@ -11,6 +11,8 @@
 
 #import <UIKit/UIKit.h>
 
+NSString *const SKProductsManagerFinishedPurchaseNotification = @"StoreKitUIDidFinishPurchase";
+
 static SKProductsManager *productManager = nil;
 
 @implementation SKProductsManager
@@ -32,7 +34,7 @@ static SKProductsManager *productManager = nil;
 		[delegate performSelector:@selector(productsManagerDidCompletePurchase:) withObject:productID];
 	}
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"StoreKitUIDidFinishPurchase" object:productID];
+	[[NSNotificationCenter defaultCenter] postNotificationName:SKProductsManagerFinishedPurchaseNotification object:productID];
 }
 
 // PUBLIC
@@ -171,7 +173,7 @@ static SKProductsManager *productManager = nil;
 					[alert show];
 				}
 				
-				[[NSNotificationCenter defaultCenter] postNotificationName:@"StoreKitUIDidFinishPurchase" object:nil];
+				[[NSNotificationCenter defaultCenter] postNotificationName:SKProductsManagerFinishedPurchaseNotification object:nil];
 				
 				// Remove the transaction from the payment queue.
 				[[SKPaymentQueue defaultQueue] finishTransaction:transaction];

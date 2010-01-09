@@ -11,6 +11,8 @@
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_3_0
 
+extern NSString *const SKProductsManagerFinishedPurchaseNotification;
+
 @protocol SKProductsManagerDelegate;
 
 @interface SKProductsManager : NSObject <SKProductsRequestDelegate, SKPaymentTransactionObserver> {

@@ -39,7 +39,7 @@
 		
 		[[SKProductsManager productManager] addObserver:self forKeyPath:@"products" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:NULL];
 		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPurchase:) name:@"StoreKitUIDidFinishPurchase" object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPurchase:) name:SKProductsManagerFinishedPurchaseNotification object:nil];
 		
 		self.navigationItem.title = NSLocalizedString(@"Store", @"Store");
 		
