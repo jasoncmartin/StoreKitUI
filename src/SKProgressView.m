@@ -107,7 +107,6 @@
 	[UIView setAnimationDuration:0.40];
 	[UIView setAnimationDidStopSelector:@selector(animationFinished: finished: context:)];
 	self.alpha = 0.0;
-	//self.transform = CGAffineTransformMakeScale(0.5, 0.5);
 	[UIView commitAnimations];
 }
 
