@@ -155,6 +155,9 @@
 	[progressView release];
 	progressView = nil;
 	
+	[productIDs release];
+	productIDs = nil;
+	
     [super dealloc];
 }
 
