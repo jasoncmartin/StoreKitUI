@@ -166,9 +166,9 @@ static SKProductsManager *productManager = nil;
 				break;
 			case SKPaymentTransactionStateFailed:
 				if (transaction.error.code != SKErrorPaymentCancelled) {
-					UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"Error"
+					UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"Error")
 																	 message:[[transaction error] localizedDescription] delegate:nil
-														   cancelButtonTitle:@"OK"
+														   cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
 														   otherButtonTitles:nil] autorelease];
 					[alert show];
 				}
