@@ -34,7 +34,7 @@ static SKProductsManager *productManager = nil;
 		[delegate performSelector:@selector(productsManagerDidCompletePurchase:) withObject:productID];
 	}
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:SKProductsManagerFinishedPurchaseNotification object:productID];
+	[[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:[NSNotification notificationWithName:SKProductsManagerFinishedPurchaseNotification object:productID] waitUntilDone:NO];
 }
 
 // PUBLIC
