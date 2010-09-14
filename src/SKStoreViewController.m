@@ -125,6 +125,7 @@
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	} else {
 		NSNumberFormatter *currencyStyle = [[NSNumberFormatter alloc] init];
+		[currencyStyle setLocale:product.priceLocale];
 		[currencyStyle setFormatterBehavior:NSNumberFormatterBehavior10_4];
 		[currencyStyle setNumberStyle:NSNumberFormatterCurrencyStyle];
 		
